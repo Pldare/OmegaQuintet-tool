@@ -51,6 +51,16 @@ for i in 0..(file_es-1)
 	file_local_wz=read_int32
 	file_size=read_int32
 	offsett=start_wz+file_local_wz
+	
+	#file-head
+	go_wz(offsett)
+	litte_head=$cl3_file.read(3).to_s
+	if litte_head == "DDS"
+		tmp_file_name=file_name.split(".")
+		tmp_file_name[((tmp_file_name.size.to_i)-1)]="dds"
+		file_name=tmp_file_name.join(".")
+	end
+	
 	write_file(file_name,offsett,file_size)
 	wz_local+=48
 end
