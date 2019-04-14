@@ -36,9 +36,11 @@ def write_file(_file_name,_wz,_size)
 end
 $cl3_file=File.open(ARGV[0],"rb")
 str_magic("CL3L")
-go_wz(56)
+go_wz(16)
+wz=read_int32
+go_wz(wz)
 str_magic("FILE_COLLECTION")
-go_wz(88)
+go_wz(wz+32)
 file_es,dunny,start_wz=read_int32,read_int32,read_int32
 wz_local=start_wz
 
